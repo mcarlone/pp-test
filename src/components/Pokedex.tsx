@@ -48,17 +48,34 @@ const Pokedex: React.FC<Props> = ({ allPokemon, pokemonDetailsList }) => {
         setsearchTerm(inputValue)
     }
 
+    const poekNames = Object.keys(allPokemon);
+    const list22:JSX.Element[] = poekNames.map((p:any) => <option key={p} value={p}/>)
+
     return (
         <div>
-            <input
+            {/* <input
                 type="text"
                 id="pokemon-name"
                 placeholder="Search by name"
                 value={searchTerm}
                 onChange={handleChange}
+            /> */}
+
+            Pokedex Search: 
+            <input 
+            list="pokemon-list" 
+            id="pokemon-choice" 
+            name="pokemon-choice"
+            placeholder="Search by name"
+            value={searchTerm}
+            onChange={handleChange}
             />
 
-            { allPokemon[searchTerm] && allPokemon[searchTerm].url }
+            <datalist id="pokemon-list">
+                {list22}
+            </datalist>
+
+
 
             { pokemonDetailsList[searchTerm] && <PokemonDetails pokemonDetails={pokemonDetailsList[searchTerm]}/> }
         </div>
