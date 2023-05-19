@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import { Dispatch } from "redux"
 import { useDispatch, useSelector, shallowEqual } from "react-redux"
 import { setPokemonList } from './store/actionCreators';
-import logo from './logo.svg';
 import './App.css';
+
+import Pokedex from './components/Pokedex';
 
 import { fetchAllPokemon, fetchPokemonDetails } from "./data";
 
@@ -18,13 +19,18 @@ function App() {
   }, []);
 
   const allPokemon: {[id: string]: IPokemon} = useSelector(
-    (state: PokemonState) => state,
+    (state: AppState) => state.pokemonList,
+    shallowEqual
+  )
+
+  const pokemonDetailsList: {[id: string]: IPokemonDetails} = useSelector(
+    (state: AppState) => state.pokemonDetailsList,
     shallowEqual
   )
 
   return (
     <div className="App">
-      (Pokedex)
+      <Pokedex allPokemon={allPokemon} pokemonDetailsList={pokemonDetailsList}/>
     </div>
   );
 }

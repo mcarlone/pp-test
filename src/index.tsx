@@ -1,18 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createStore, applyMiddleware, Store } from "redux";
+import { createStore, applyMiddleware, combineReducers, Store } from "redux";
 import { Provider } from "react-redux";
 
 import './index.css';
 import App from './App';
-import {PokemonListReducer} from './store/reducers'
+import {PokemonListReducer, allReducers} from './store/reducers'
 
 import reportWebVitals from './reportWebVitals';
 
 
-const store: Store<PokemonState, any> & { // TODO: proper Action type instead of any
+
+
+// const store: Store<PokemonListState, any> & { // TODO: proper Action type instead of any
+//   dispatch: any // TODO: proper DispatchType instead of any
+// } = createStore(PokemonListReducer)
+
+
+const store: Store<AppState, any> & { // TODO: proper Action type instead of any
   dispatch: any // TODO: proper DispatchType instead of any
-} = createStore(PokemonListReducer)
+} = createStore(allReducers)
 
 
 const root = ReactDOM.createRoot(

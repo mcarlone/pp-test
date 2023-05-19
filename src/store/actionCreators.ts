@@ -6,3 +6,10 @@ export function setPokemonList(pokemons: IPokemon[]) {
         payload: pokemons
     }
 }
+
+export function setPokemonDetails(pokemonDetails: IPokemonDetails) {
+    return {
+        type: actionTypes.SET_POKEMON_DETAILS,
+        payload: pokemonDetails
+    }
+}
