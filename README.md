@@ -14,7 +14,7 @@ Type into the search input the name of the Pokemon for which you are searching. 
 
 The search input will suggest names as you type. The more you type, the more accurate the suggestions. If you wish, you can mouse-click or keyboard navigate to a suggestion + hit Enter.
 
-When you find a pokemon, it is added the top of the Previously Searched list, which you find at the bottom of the page. This list is capped at 50 entries, but this is an arbitary limit.
+When you find a pokemon, it is added the top of the Previously Searched list, which you find at the bottom of the page. This list is persisted. This list is capped at 50 entries, but this is an arbitary limit.
 
 I hope this Pokedex leads to you dominating your battles and brings you wild wealth and good fortune. 
 
