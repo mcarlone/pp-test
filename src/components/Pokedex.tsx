@@ -3,44 +3,14 @@ import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { fetchPokemonDetails } from "../data";
 import { setPokemonDetails } from './../store/actionCreators';
-
-
-type Propss = {
-    pokemonDetails: IPokemonDetails
-}
-
-const PokemonDetails: React.FC<Propss> = ({ pokemonDetails }) => {
-
-    return (
-        <div>
-            <h3>{pokemonDetails.name}</h3>
-            <img src={pokemonDetails.spriteURL}/>
-            <p><b>Weight:</b> {pokemonDetails.weight} hectograms</p>
-            <p><b>Abilities:</b> {pokemonDetails.abilities.map((a:IAbility) => a.name).join(', ')}</p>
-            <p><b>Species:</b> {pokemonDetails.species  }</p>
-        </div>
-    )
-}
-
-
+import PokemonDetails from './PokemonDetails';
+import Search from './Search';
+import { savedSearches, saveSearch } from './../utils';
 
 type Props = {
     allPokemon: PokemonListState,
     pokemonDetailsList: PokemonDetailListState
 }
-
-const savedSearches = (): string[] => {
-    const searchesStore = localStorage.getItem("savedSearches");
-    const savedSearches = searchesStore ? JSON.parse(searchesStore) : [];
-    return savedSearches;
-}
-const saveSearch = (searchTerm:string): void => {
-    const HISTORY_RECORD_LIMIT = 50;
-    let cleanedSearches = savedSearches().filter((term:string) => term !== searchTerm);
-    cleanedSearches.unshift(searchTerm);
-    localStorage.setItem("savedSearches", JSON.stringify(cleanedSearches.slice(0,HISTORY_RECORD_LIMIT)));
-}
-
 
 const Pokedex: React.FC<Props> = ({ allPokemon, pokemonDetailsList }) => {
     const dispatch: Dispatch<any> = useDispatch()
@@ -65,25 +35,11 @@ const Pokedex: React.FC<Props> = ({ allPokemon, pokemonDetailsList }) => {
         }
     }
 
-    const pokemonkNames = Object.keys(allPokemon);
-    const pokemonOptions:JSX.Element[] = pokemonkNames.map((p:any) => <option key={p} value={p}/>)
-
     return (
         <div>
             Pokedex Search: 
-            <input 
-            list="pokemon-list" 
-            id="pokemon-choice" 
-            name="pokemon-choice"
-            placeholder="Search by name"
-            value={searchTerm}
-            onChange={handleChange}
-            />
-
-            <datalist id="pokemon-list">
-                {pokemonOptions}
-            </datalist>
-
+            <Search allPokemon={allPokemon} searchTerm={searchTerm} handleChange={handleChange}/>
+ 
             { pokemonDetailsList[searchTerm] && <PokemonDetails pokemonDetails={pokemonDetailsList[searchTerm]}/> }
 
             <h2>Previously Searched Pokemon:</h2>
