@@ -35,10 +35,10 @@ const savedSearches = (): string[] => {
     return savedSearches;
 }
 const saveSearch = (searchTerm:string): void => {
-
+    const HISTORY_RECORD_LIMIT = 50;
     let cleanedSearches = savedSearches().filter((term:string) => term !== searchTerm);
     cleanedSearches.unshift(searchTerm);
-    localStorage.setItem("savedSearches", JSON.stringify(cleanedSearches));
+    localStorage.setItem("savedSearches", JSON.stringify(cleanedSearches.slice(0,HISTORY_RECORD_LIMIT)));
 }
 
 
@@ -88,7 +88,7 @@ const Pokedex: React.FC<Props> = ({ allPokemon, pokemonDetailsList }) => {
 
             <h2>Previously Searched Pokemon:</h2>
             <ul>
-                { savedSearches().map((searchTerm:string) => (<li key={searchTerm} onClick={ (e:React.MouseEvent<HTMLLIElement>):void => { setsearchTerm(searchTerm); fetchPokemon(searchTerm) }}>{searchTerm}</li>)) }
+                { savedSearches().map((searchTerm:string) => (<li style={{cursor:'pointer'}} key={searchTerm} onClick={ (e:React.MouseEvent<HTMLLIElement>):void => { setsearchTerm(searchTerm); fetchPokemon(searchTerm) }}>{searchTerm}</li>)) }
             </ul>
         </div>
     )
