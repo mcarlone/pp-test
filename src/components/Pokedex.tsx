@@ -84,11 +84,12 @@ const Pokedex: React.FC<Props> = ({ allPokemon, pokemonDetailsList }) => {
                 {pokemonOptions}
             </datalist>
 
+            { pokemonDetailsList[searchTerm] && <PokemonDetails pokemonDetails={pokemonDetailsList[searchTerm]}/> }
+
+            <h2>Previously Searched Pokemon:</h2>
             <ul>
                 { savedSearches().map((searchTerm:string) => (<li key={searchTerm} onClick={ (e:React.MouseEvent<HTMLLIElement>):void => { setsearchTerm(searchTerm); fetchPokemon(searchTerm) }}>{searchTerm}</li>)) }
             </ul>
-
-            { pokemonDetailsList[searchTerm] && <PokemonDetails pokemonDetails={pokemonDetailsList[searchTerm]}/> }
         </div>
     )
 }
