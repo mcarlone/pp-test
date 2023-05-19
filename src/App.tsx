@@ -7,7 +7,7 @@ import './App.css';
 
 import Pokedex from './components/Pokedex';
 
-import { fetchAllPokemon, fetchPokemonDetails } from "./data";
+import { fetchAllPokemon } from "./data";
 
 function App() {
   const dispatch: Dispatch<any> = useDispatch()

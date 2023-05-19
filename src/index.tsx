@@ -10,13 +10,6 @@ import {PokemonListReducer, allReducers} from './store/reducers'
 import reportWebVitals from './reportWebVitals';
 
 
-
-
-// const store: Store<PokemonListState, any> & { // TODO: proper Action type instead of any
-//   dispatch: any // TODO: proper DispatchType instead of any
-// } = createStore(PokemonListReducer)
-
-
 const store: Store<AppState, any> & { // TODO: proper Action type instead of any
   dispatch: any // TODO: proper DispatchType instead of any
 } = createStore(allReducers)
