@@ -30,7 +30,6 @@ const Pokedex: React.FC<Props> = ({ allPokemon, pokemonDetailsList }) => {
             fetchPokemonDetails(name).then(pokemonDetails => {
                 setttPokemonDetails(pokemonDetails);
                 dispatch(setPokemonDetails(pokemonDetails))
-                console.log('pokemonDetails', pokemonDetails)
             })
         }
     }
