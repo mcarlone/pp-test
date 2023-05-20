@@ -33,7 +33,7 @@ If given more time, here are some items I would address:
 * Search text is not trimmed, so while `      pikachu` will not find Pikachu (although Pikachu will come up as a search suggestion which can be clicked). Trimming the input is an easy improvement.
 * The app is running in React Strict Mode for better warning/error feedback, a side effect is that the app mounts twice. It's not visibly noticeable, but I'd like to get it running for a production environment.
 * Saved searches, which are at the bottom of the page, should be better positioned. Ideally these could be in they're own group in the search suggestion dropdown.
-* Finally, yes, it's completely un-styled and could use some visual structure and shine.
+* Finally, yes, it's completely un-styled and could use some visual structure and shine. I did not put my time towards presentation.
 
 ## Regarding Concurrency 
 
